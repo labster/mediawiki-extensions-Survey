@@ -9,8 +9,9 @@
  */
 
 ( function ( survey ) {
-	$( function () {
 
+	$( function () {
+	
 		var $table = null,
 			newQuestionNr = 0,
 			questionNr = 0;
@@ -52,7 +53,7 @@
 			$tr.append( $( '<td>' ).attr( { class: 'mw-label question-label' } ).html(
 				$( '<label>' ).text( mw.msg( 'survey-question-label-nr', ++questionNr ) )
 			) );
-
+			
 			$tr.append( $( '<td>' ).attr( { class: 'mw-input' } ).html(
 				getQuestionInput( question )
 					.append( '<br>' )
@@ -86,6 +87,8 @@
 					answers: question.answers
 				} );
 
+				
+
 			$input.append( $( '<label>' ).attr( {
 				for: 'survey-question-text-' + question.id
 			} ).text( mw.msg( 'survey-special-label-text' ) ) );
@@ -104,8 +107,7 @@
 			$input.append( $( '<label>' ).attr( {
 				for: 'survey-question-type-' + question.id
 			} ).text( mw.msg( 'survey-special-label-type' ) ) );
-
-			$input.append( survey.question.getTypeSelector(
+			$input.append( window.survey.question.getTypeSelector(
 				question.type,
 				{
 					id: 'survey-question-type-' + question.id,
@@ -167,7 +169,7 @@
 			addAddQuestionRow();
 
 			$table.append( '<tr><td colspan="2"><hr /></td></tr>' );
-
+			
 			$( '.survey-question-data' ).each( function ( index, domElement ) {
 				var $this;
 				$this = $( domElement );
